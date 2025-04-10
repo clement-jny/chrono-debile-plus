@@ -2,6 +2,7 @@ package com.chronodebileplus.central.stores;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -12,6 +13,8 @@ public class StoreService {
     private final RestClient restClient;
     private static final Logger logger = LoggerFactory.getLogger(StoreService.class);
 
+    @Value("${central.endpoint.stores}")
+    private String centralEndpointStores;
 
     public StoreService(RestClient _restClient) {
         this.restClient = _restClient;
@@ -23,8 +26,9 @@ public class StoreService {
      * @return Liste des stores avec leurs informations complètes
      */
     public List<Store> retrieveStores() {
+        // TODO: add try/catch
         StoreApiResponse storeApiResponse = this.restClient.get()
-            .uri("/central/stores")
+            .uri(this.centralEndpointStores)
             .retrieve()
             .body(StoreApiResponse.class);
 
@@ -35,13 +39,14 @@ public class StoreService {
 
     /**
      * Enregistre un nouveau store
-     * Note: L'API renvoie seulement id et name, on garde le baseUrl en cache
+     * Note: L'API renvoie seulement id et name
      * @param _store Store à enregistrer
      * @return Store enregistré avec son ID
      */
     public Store registerStore(Store _store) {
+        // TODO: add try/catch
         Store store = this.restClient.post()
-            .uri("/central/stores")
+            .uri(this.centralEndpointStores)
             .body(_store)
             .retrieve()
             .body(Store.class);
