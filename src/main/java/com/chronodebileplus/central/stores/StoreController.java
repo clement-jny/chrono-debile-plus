@@ -14,7 +14,7 @@
 
 //     // @Value("${myStore.name}")
 //     // private String _myStoreName;
-//     // @Value("${myStore.endpoint}")
+//     // @Value("${myStore.url}")
 //     // private String _myStoreEndpoint;
 
 //     // private Store _myStore = new Store(_myStoreName, _myStoreEndpoint);
