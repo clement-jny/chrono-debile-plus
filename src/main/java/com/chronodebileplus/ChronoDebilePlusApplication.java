@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono;
+package com.chronodebileplus;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
