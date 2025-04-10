@@ -8,8 +8,8 @@ import org.springframework.web.client.RestClient;
 
 @SpringBootApplication
 public class ChronoDebilePlusApplication {
-	@Value("${central.endpoint}")
-	private String centralEndpoint;
+	@Value("${central.url}")
+	private String centralUrl;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ChronoDebilePlusApplication.class, args);
@@ -17,6 +17,6 @@ public class ChronoDebilePlusApplication {
 
 	@Bean
 	public RestClient restClient() {
-		return RestClient.create(this.centralEndpoint);
+		return RestClient.create(this.centralUrl);
 	}
 }
