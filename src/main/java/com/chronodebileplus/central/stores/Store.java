@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class Store {
+    // PROPERTIES
     @JsonProperty("id")
     private Long id;
     @JsonProperty("name")
@@ -12,22 +13,24 @@ public class Store {
     // @JsonProperty("baseUrl")
     private String baseUrl;
 
-    // Constructeur vide pour la désérialisation JSON
+    // CONSTRUCTORS
+    // Empty constructor for JSON deserialization
     public Store() {}
 
-    // Constructeur pour création d'un nouveau store (sans id)
+    // Constructor for creating a new store (without id)
     public Store(String name, String baseUrl) {
         this.name = name;
         this.baseUrl = baseUrl;
     }
 
-    // Constructeur pour récupération via l'API avec id (sans baseUrl)
+    // Constructor for retrieving from API with id (without baseUrl)
     public Store(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    // Getters et Setters
+
+    // GETTER / SETTER
     public Long getId() {
         return id;
     }
@@ -50,6 +53,7 @@ public class Store {
     // }
 
 
+    // OVERRIDE
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
