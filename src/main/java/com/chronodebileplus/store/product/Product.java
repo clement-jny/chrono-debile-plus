@@ -2,7 +2,6 @@ package com.chronodebileplus.store.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 import java.util.Objects;
 
 @Entity
@@ -18,6 +17,10 @@ public class Product {
     private double amount;
 
     public Product() {}
+
+    public Product(Long productId) {
+        this.productId = productId;
+    }
 
     public Product(
         Long productId,
@@ -64,11 +67,25 @@ public class Product {
         this.amount = amount;
     }
 
+    public Product deepCopy() {
+        return new Product(
+            this.productId,
+            this.productName,
+            this.quantity,
+            this.amount
+        );
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(amount, product.amount) == 0 && Objects.equals(productId, product.productId) && Objects.equals(productName, product.productName) && Objects.equals(quantity, product.quantity);
+        return (
+            Double.compare(amount, product.amount) == 0 &&
+            Objects.equals(productId, product.productId) &&
+            Objects.equals(productName, product.productName) &&
+            Objects.equals(quantity, product.quantity)
+        );
     }
 
     @Override
@@ -78,11 +95,18 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", quantity=" + quantity +
-                ", amount=" + amount +
-                '}';
+        return (
+            "Product{" +
+            "productId=" +
+            productId +
+            ", productName='" +
+            productName +
+            '\'' +
+            ", quantity=" +
+            quantity +
+            ", amount=" +
+            amount +
+            '}'
+        );
     }
 }
