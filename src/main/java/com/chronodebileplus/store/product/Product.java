@@ -3,6 +3,8 @@ package com.chronodebileplus.store.product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.Objects;
+
 @Entity
 public class Product {
 
@@ -63,18 +65,24 @@ public class Product {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(amount, product.amount) == 0 && Objects.equals(productId, product.productId) && Objects.equals(productName, product.productName) && Objects.equals(quantity, product.quantity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId, productName, quantity, amount);
+    }
+
+    @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder
-            .append("Product [id=")
-            .append(productId)
-            .append(", productName=")
-            .append(productName)
-            .append(", quantity=")
-            .append(quantity)
-            .append(", amount=")
-            .append(amount)
-            .append("]");
-        return builder.toString();
+        return "Product{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                ", amount=" + amount +
+                '}';
     }
 }

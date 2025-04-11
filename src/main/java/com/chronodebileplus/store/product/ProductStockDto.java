@@ -1,5 +1,7 @@
 package com.chronodebileplus.store.product;
 
+import java.util.Objects;
+
 public class ProductStockDto {
 
     private Long productId;
@@ -36,5 +38,26 @@ public class ProductStockDto {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductStockDto that = (ProductStockDto) o;
+        return Objects.equals(productId, that.productId) && Objects.equals(productName, that.productName) && Objects.equals(quantity, that.quantity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId, productName, quantity);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductStockDto{" +
+                "productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", quantity=" + quantity +
+                '}';
     }
 }
