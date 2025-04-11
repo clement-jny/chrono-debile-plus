@@ -109,4 +109,35 @@ public class OrderService {
 
         return new OrderDto(dto.getId(), response);
     }
+
+    public OrderPaymentDto pay(Long id) {
+        List<Order> order = orderRepository.findByOrderKey_Id(id);
+
+        if (order.isEmpty()) {
+            return new OrderPaymentDto(0.0);
+        }
+
+        // get existing products
+        List<Long> productIds = order
+            .stream()
+            .map(Order::getProductId)
+            .toList();
+        List<Product> existingProducts = productRepository.findAllById(
+            productIds
+        );
+
+        // loop through products to update total
+        Double totalPrice = 0.0;
+        for (Product product : existingProducts) {
+            Long quantityOrdered = order
+                .stream()
+                .filter(o -> o.getProductId().equals(product.getProductId()))
+                .mapToLong(Order::getQuantity)
+                .sum();
+
+            totalPrice += product.getAmount() * quantityOrdered;
+        }
+
+        return new OrderPaymentDto(totalPrice);
+    }
 }

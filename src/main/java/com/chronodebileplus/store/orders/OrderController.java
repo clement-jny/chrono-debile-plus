@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +28,19 @@ public class OrderController {
     @PostMapping(produces = "application/json")
     public OrderDto save(
         @Parameter(
-            description = "List of the products. Notice that, if an id already exists, this will alter the existing product."
+            description = "Content of the order"
         ) @RequestBody OrderDto orderDto
     ) {
         return service.save(orderDto);
+    }
+
+    @Operation(
+        description = "Creates a payment for a placed order, providing the total amount of the payment"
+    )
+    @PostMapping(value = "/{id}/payments", produces = "application/json")
+    public OrderPaymentDto pay(
+        @Parameter(description = "ID of the order") @PathVariable Long id
+    ) {
+        return service.pay(id);
     }
 }
