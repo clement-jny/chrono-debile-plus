@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono.store.product;
+package com.chronodebileplus.store.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

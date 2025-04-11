@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono.store.product;
+package com.chronodebileplus.store.product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

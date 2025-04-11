@@ -1,8 +1,8 @@
-package com.chronodebileplus.chrono.store.stock;
+package com.chronodebileplus.store.stock;
 
-import com.chronodebileplus.chrono.store.product.Product;
-import com.chronodebileplus.chrono.store.product.ProductRepository;
-import com.chronodebileplus.chrono.store.product.ProductStockDto;
+import com.chronodebileplus.store.product.Product;
+import com.chronodebileplus.store.product.ProductRepository;
+import com.chronodebileplus.store.product.ProductStockDto;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

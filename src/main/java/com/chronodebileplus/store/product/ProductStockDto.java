@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono.store.product;
+package com.chronodebileplus.store.product;
 
 public class ProductStockDto {
 

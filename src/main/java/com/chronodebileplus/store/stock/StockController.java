@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono.store.stock;
+package com.chronodebileplus.store.stock;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

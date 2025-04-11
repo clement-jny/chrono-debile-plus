@@ -1,6 +1,6 @@
-package com.chronodebileplus.chrono.store.stock;
+package com.chronodebileplus.store.stock;
 
-import com.chronodebileplus.chrono.store.product.ProductStockDto;
+import com.chronodebileplus.store.product.ProductStockDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
