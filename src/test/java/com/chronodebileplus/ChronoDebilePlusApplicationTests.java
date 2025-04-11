@@ -1,4 +1,4 @@
-package com.chronodebileplus.chrono;
+package com.chronodebileplus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ChronoDebilePlusApplicationTests {
 
-	//@Test
+	@Test
 	void contextLoads() {
 	}
 
