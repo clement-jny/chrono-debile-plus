@@ -29,11 +29,7 @@ public class StockServiceUnitTest {
                 new ProductStockDto(2L, "Pdt2", 78L)
             )
         );
-    }
-
-    @BeforeEach
-    public void setup() {
-        this.stockService.save(baseStockDto);
+        this.stockService.save(this.baseStockDto);
     }
 
     @Test
@@ -61,7 +57,6 @@ public class StockServiceUnitTest {
         logger.info("shouldSetStock::newStockDto: {}", newStockDto.getProducts().toString());
 
         //StockDto oldStockDto = this.stockService.get();
-
 
         // When
         StockDto result = this.stockService.save(newStockDto);
