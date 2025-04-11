@@ -8,23 +8,31 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class StoreInitializer {
+
     private final StoreService storeService;
-    private static final Logger logger = LoggerFactory.getLogger(StoreInitializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(
+        StoreInitializer.class
+    );
 
     public StoreInitializer(StoreService _storeService) {
-       this.storeService = _storeService;
+        this.storeService = _storeService;
     }
 
     @Value("${myStore.name}")
     private String myStoreName;
+
     @Value("${myStore.url}")
     private String myStoreUrl;
 
-    @PostConstruct()
+    @PostConstruct
     public void initializeMyStore() {
         // Vérifier si le store existe déjà
         if (this.storeService.storeNameExists(this.myStoreName)) {
-            throw new IllegalArgumentException("Le nom du magasin est déjà utilisé: " + this.myStoreName);
+            logger.error(
+                "Le nom du magasin est déjà utilisé: {}",
+                this.myStoreName
+            );
+            return;
         }
 
         // Register the store
