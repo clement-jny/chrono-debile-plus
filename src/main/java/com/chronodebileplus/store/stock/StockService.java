@@ -15,6 +15,23 @@ public class StockService {
     @Autowired
     ProductRepository productRepository;
 
+    public StockDto get() {
+        List<Product> products =
+            productRepository.findAllByOrderByProductIdAsc();
+        List<ProductStockDto> productStockDtos = products
+            .stream()
+            .map(product ->
+                new ProductStockDto(
+                    product.getProductId(),
+                    product.getProductName(),
+                    product.getQuantity()
+                )
+            )
+            .collect(Collectors.toList());
+
+        return new StockDto(productStockDtos);
+    }
+
     public StockDto save(StockDto dto) {
         List<ProductStockDto> dtoProducts = dto.getProducts();
 
