@@ -2,7 +2,6 @@ package com.chronodebileplus.store.stock;
 
 import com.chronodebileplus.store.product.ProductStockDto;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,13 +55,9 @@ public class StockServiceUnitTest {
         );
         logger.info("shouldSetStock::newStockDto: {}", newStockDto.getProducts().toString());
 
-        //StockDto oldStockDto = this.stockService.get();
-
         // When
         StockDto result = this.stockService.save(newStockDto);
         logger.info("shouldSetStock::result: {}", result.getProducts().toString());
-
-        //this.stockDto.setProducts(this.stockDto.getProducts(), newStockDto.getProducts());
 
         // Then
         //logger.info(result.getProducts().toString());
@@ -75,7 +70,7 @@ public class StockServiceUnitTest {
         // Merge newStockDto into baseStockDto
         List<ProductStockDto> mergedProducts = this.baseStockDto.getProducts().stream()
             .filter(baseProduct -> newStockDto.getProducts().stream()
-            .noneMatch(newProduct -> newProduct.getProductId().equals(baseProduct.getProductId())))
+                .noneMatch(newProductStock -> newProductStock.getProductId().equals(baseProduct.getProductId())))
             .collect(Collectors.toList());
 
         mergedProducts.addAll(newStockDto.getProducts());
