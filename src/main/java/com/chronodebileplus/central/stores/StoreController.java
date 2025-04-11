@@ -15,9 +15,9 @@
 //     // @Value("${myStore.name}")
 //     // private String _myStoreName;
 //     // @Value("${myStore.url}")
-//     // private String _myStoreEndpoint;
+//     // private String _myStoreUrl;
 
-//     // private Store _myStore = new Store(_myStoreName, _myStoreEndpoint);
+//     // private Store _myStore = new Store(_myStoreName, _myStoreUrl);
 
 //     // public StoreController(StoreService _storeService) {
 //     //     this.storeService = _storeService;

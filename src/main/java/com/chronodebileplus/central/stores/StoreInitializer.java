@@ -18,7 +18,7 @@ public class StoreInitializer {
     @Value("${myStore.name}")
     private String myStoreName;
     @Value("${myStore.url}")
-    private String myStoreEndpoint;
+    private String myStoreUrl;
 
     @PostConstruct()
     public void initializeMyStore() {
@@ -28,7 +28,7 @@ public class StoreInitializer {
         }
 
         // Register the store
-        Store store = new Store(this.myStoreName, this.myStoreEndpoint);
+        Store store = new Store(this.myStoreName, this.myStoreUrl);
         logger.info("Registering store: {}", store);
         Store registeredStore = this.storeService.registerStore(store);
         logger.info("Store registered with ID: {}", registeredStore.getId());
